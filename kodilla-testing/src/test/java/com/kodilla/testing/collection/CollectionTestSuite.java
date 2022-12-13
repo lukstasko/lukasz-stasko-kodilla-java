@@ -31,9 +31,9 @@ public class CollectionTestSuite {
         /* Given */
         OddNumbersExterminator oddNumbersExterminator=new OddNumbersExterminator();
         /* When */
-        List <Integer>  result=oddNumbersExterminator.exterminate(Arrays.asList(new Integer[] {}));
+        List <Integer>  result=oddNumbersExterminator.exterminate(List.of());
         /* Then */
-        Assertions.assertEquals(Arrays.asList(new Integer[] {}),result);
+        Assertions.assertEquals(List.of(),result);
     }
 
     @DisplayName("When input list contains even and odd numbers, " +
@@ -41,7 +41,7 @@ public class CollectionTestSuite {
     @Test
     void testOddNumbersExterminatorNormalList(){
         /* Given */
-        List <Integer> list= Arrays.asList(new Integer[] {0,1,2,3,4,5,6,7,8,9});
+        List <Integer> list= Arrays.asList(0,1,2,3,4,5,6,7,8,9);
         OddNumbersExterminator oddNumbersExterminator=new OddNumbersExterminator();
         /* When */
         List <Integer>  result=oddNumbersExterminator.exterminate(list);
