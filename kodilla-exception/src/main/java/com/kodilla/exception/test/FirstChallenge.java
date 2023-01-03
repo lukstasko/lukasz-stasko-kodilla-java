@@ -24,6 +24,8 @@ public class FirstChallenge {
              System.out.println("End");
         }
 
-
+ Exponentiation exponentiation=new Exponentiation();
+       double result= exponentiation.myExp(2,0);
+        System.out.println(result);
     }
 }
