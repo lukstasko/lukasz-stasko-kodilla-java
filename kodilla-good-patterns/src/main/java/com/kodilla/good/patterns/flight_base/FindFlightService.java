@@ -35,21 +35,8 @@ public class FindFlightService implements  FlightService{
 
     @Override
     public void findFlightFromTo(String departureAirport, String destinationAirport) {
-        List<Flight> list1=new ArrayList<>();
-        List<Flight> list2=new ArrayList<>();
-        List<Flight> resultList=new ArrayList<>();
-
-        list1= flightFrom.findFlightFrom(flightBase,departureAirport);
-        list2= flightTo.findFlightTo( flightBase,destinationAirport);
-
-        for(Flight flight1:list1) {
-            for (Flight flight2 : list2) {
-                if (flight1.getArrivalAirport().equals(flight2.getDepartureAirport())) {
-                    resultList.add(flight1);
-                    resultList.add(flight2);
-                }
-            }
-        }
+        information.inform(flightFromTo.findFlightFromTo(flightFrom.findFlightFrom(flightBase,departureAirport),flightTo.findFlightTo( flightBase,destinationAirport)));
     }
 
 }
+

@@ -14,7 +14,5 @@ public class FlightFromService implements FlightFrom{
                 .filter(f->f.getDepartureAirport().equals(departureAirport))
                 .collect(Collectors.toList());
     }
-
-
 }
 
