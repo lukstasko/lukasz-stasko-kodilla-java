@@ -1,26 +1,31 @@
 package com.kodilla.spring.portfolio;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class BoardTestSuite {
-    @Autowired
-    Board board;
+
     @Test
-    void testTaskAdd(){
+    void testTaskAdd() {
+
         //Given
+        ApplicationContext context=new AnnotationConfigApplicationContext(BoardConfig.class);
+        Board board=context.getBean(Board.class);
 
         //When
-        board.getToDoList().addTask("First task to do.");
-        board.getInProgressList().addTask("First task in progress.");
-        board.getDoneList().addTask("First done task.");
+        board.toDoList.addTask("First task to do.");
+        board.inProgressList.addTask("First task in progress.");
+        board.doneList.addTask("First done task.");
+
         //Then
-        assertEquals("First task to do.",board.getToDoList().task.get(0));
-        assertEquals("First task in progress.",board.getInProgressList().task.get(0));
-        assertEquals("First done task.",board.getDoneList().task.get(0));
+        assertEquals("First task to do.",board.toDoList.task.get(0));
+        assertEquals("First task in progress.",board.inProgressList.task.get(0));
+        assertEquals("First done task.",board.doneList.task.get(0));
     }
 }

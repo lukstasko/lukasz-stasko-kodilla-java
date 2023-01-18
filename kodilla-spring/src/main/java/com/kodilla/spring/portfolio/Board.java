@@ -22,6 +22,4 @@ public final class Board {
     public TaskList getDoneList() {
         return doneList;
     }
-
-
 }
