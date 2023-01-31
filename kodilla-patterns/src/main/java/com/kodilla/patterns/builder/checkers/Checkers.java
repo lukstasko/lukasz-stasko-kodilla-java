@@ -37,6 +37,7 @@ public class Checkers {
             return this;
         }
 
+
         public CheckerBuilder Figure(String figureType, String figureColor,int x, int y){
            if(x> Board.MAX_INDEX || x< Board.MIN_INDEX ||
             y> Board.MAX_INDEX || y< Board.MIN_INDEX){
