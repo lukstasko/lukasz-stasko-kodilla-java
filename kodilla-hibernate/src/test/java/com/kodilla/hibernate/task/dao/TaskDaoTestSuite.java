@@ -23,6 +23,59 @@ public class TaskDaoTestSuite {
     private static final String DESCRIPTION="Test: Learn Hibernate";
 
     @Test
+    void testNamedQueries(){
+        //Given
+        Task task1 = new Task("Test: Study Hibernate", 3);
+        Task task2 = new Task("Test: Practice Named Queries", 6);
+        Task task3 = new Task("Test: Study native queries", 7);
+        Task task4 = new Task("Test: Makse some tests", 13);
+
+        TaskFinancialDetails tfd1 = new TaskFinancialDetails(new BigDecimal(5), false);
+        TaskFinancialDetails tfd2 = new TaskFinancialDetails(new BigDecimal(10), false);
+        TaskFinancialDetails tfd3 = new TaskFinancialDetails(new BigDecimal(20), false);
+        TaskFinancialDetails tfd4 = new TaskFinancialDetails(new BigDecimal(15), false);
+
+        task1.setTaskFinancialDetails(tfd1);
+        task2.setTaskFinancialDetails(tfd2);
+        task3.setTaskFinancialDetails(tfd3);
+        task4.setTaskFinancialDetails(tfd4);
+
+        TaskList taskList=new TaskList("TODO","ToTo task");
+        taskList.getTasks().add(task1);
+        taskList.getTasks().add(task2);
+        taskList.getTasks().add(task3);
+        taskList.getTasks().add(task4);
+
+        task1.setTaskList(taskList);
+        task2.setTaskList(taskList);
+        task3.setTaskList(taskList);
+        task4.setTaskList(taskList);
+
+        taskListDao.save(taskList);
+        int id= taskList.getId();
+
+        //When
+        List<Task> longTask=taskDao.retrieveLongTasks();
+        List<Task> shortTask=taskDao.retrieveShortTasks();
+        List<Task> enoughTimeTask=taskDao.retrieveTasksWithEnoughTime();
+        List<Task> durationLongerThanTasks=taskDao.retrieveTaskWithDurationLongerThen(6);
+
+        //Then
+        try{
+            assertEquals(1,longTask.size());
+            assertEquals(3,shortTask.size());
+            assertEquals(3,enoughTimeTask.size());
+            assertEquals(2,durationLongerThanTasks.size());
+        }finally{
+            //CleanUp
+            taskListDao.deleteById(id);
+        }
+
+
+    }
+
+
+    @Test
     void testTaskListDaoSaveWithTasks(){
         //Given
         Task task=new Task("Test: Learn Hibernate",14);
@@ -40,11 +93,13 @@ public class TaskDaoTestSuite {
         taskListDao.save(taskList);
         int id=taskList.getId();
 
+
         //Then
         assertNotEquals(0,id);
 
         //CleanUp
-        //taskListDao.deleteById(id);
+        taskListDao.deleteById(id);
+
 
     }
     @Test
@@ -96,7 +151,6 @@ public class TaskDaoTestSuite {
         assertEquals(2,readTask.size());
 
         //CleanUp
-
         taskDao.deleteById(id);
     }
 

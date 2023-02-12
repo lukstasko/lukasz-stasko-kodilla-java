@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="TASKLISTS")
+@Table(name="TASKLIST")
 public class TaskList {
     private int id;
     private String listName;
@@ -46,7 +46,8 @@ public class TaskList {
             targetEntity = Task.class,
             mappedBy = "taskList",
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            fetch = FetchType.LAZY,
+            orphanRemoval = true
     )
     public List<Task> getTasks() {
         return tasks;
