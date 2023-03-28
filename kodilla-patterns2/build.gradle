@@ -1,0 +1,24 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'java'
+}
+
+group 'com.kodilla'
+version '0.0.1-SNAPSHOT'
+sourceCompatibility='17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter:3.0.5'
+    implementation 'org.springframework.boot:spring-boot-starter-aop:3.0.5'
+    implementation 'org.springframework:spring-context:6.0.7'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.0.5'
+}
+
+test {
+    useJUnitPlatform()
+}

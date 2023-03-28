@@ -11,7 +11,7 @@ public class ReaderTestSuite {
     @Test
     void testRead(){
         //Given
-        ApplicationContext context=new AnnotationConfigApplicationContext("com.kodilla.spring.portfolio");
+        ApplicationContext context=new AnnotationConfigApplicationContext("com.kodilla.spring");
         Reader reader =context.getBean(Reader.class);
 
         //When & Then

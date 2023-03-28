@@ -6,13 +6,21 @@ import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedNativeQueries({
 @NamedNativeQuery(
         name="Company.findCompanyByTheBeginningOfTheCompanyName",
         query = "SELECT * FROM COMPANIES "+
-                "WHERE LEFT(COMPANY_NAME, LENGTH (:BEGINING_OF_COMPANY_NAME))= :BEGINING_OF_COMPANY_NAME",
+                "WHERE LEFT(COMPANY_NAME, LENGTH (:BEGINNING_OF_COMPANY_NAME))= :BEGINNING_OF_COMPANY_NAME",
         resultClass = Company.class
+),
+        @NamedNativeQuery(
+                name="Company.findCompanyByThePartOfTheCompanyName",
+                query = "SELECT * FROM COMPANIES "+
+                        "WHERE COMPANY_NAME like :PART_OF_COMPANY_NAME",
+                resultClass = Company.class
+        )
 
-)
+        })
 @Entity
 @Table(name="COMPANIES")
 public class Company {

@@ -16,8 +16,9 @@ import java.util.List;
 public interface CompanyDao extends CrudRepository<Company,Integer> {
 
     @Query(nativeQuery = true)
-    List<Company> findCompanyByTheBeginningOfTheCompanyName(@Param("BEGINING_OF_COMPANY_NAME") String begibibgOfCompanyName);
+    List<Company> findCompanyByTheBeginningOfTheCompanyName(@Param("BEGINNING_OF_COMPANY_NAME") String beginningOfCompanyName);
 
-
+    @Query(nativeQuery = true)
+    List<Company> findCompanyByThePartOfTheCompanyName(@Param("PART_OF_COMPANY_NAME") String partOfCompanyName);
 
 }
