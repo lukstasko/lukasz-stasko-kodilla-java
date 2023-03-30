@@ -1,4 +1,4 @@
-package com.kodilla.paterns2.facade;
+package com.kodilla.paterns2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
