@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MedianAdapterTestSuite {
 
     @Test
-    public void publicationYearMedianTest(){
+ public void publicationYearMedianTest(){
         //Given
         Set<Book> books=new HashSet<>();
         books.add(new Book("Dylan Murphy", "Wolf of the mountains", 2003,"0001"));
@@ -24,6 +24,7 @@ public class MedianAdapterTestSuite {
         books.add(new Book("Giancarlo Guerrero", "Enemies of eternity", 2009,"0007"));
         MedianAdapter medianAdapter=new MedianAdapter();
         //When
+
         //Then
         assertEquals(2007,medianAdapter.publicationYearMedian(books));
     }
